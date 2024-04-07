@@ -19,7 +19,7 @@ const ProductContextProvider = ({ children }) => { // Contex yapısı oluşturul
       setProductList(data);
       } catch (error) {
         setError(' Error! data can not downloaded.')
-        showToast(' Error! data can not downloaded.','error')             
+        showToast(' Error! Productdata can not downloaded.','error')             
        }
        setLoading(false);
     };
@@ -38,7 +38,7 @@ const ProductContextProvider = ({ children }) => { // Contex yapısı oluşturul
     setProductList([...productList,data]);
     showToast(' Product successfuly added!');   
     } catch (error) {
-      showToast(' Error! data can not added.', 'error');       
+      showToast(' Error! Podusctdata can not added.', 'error');       
     }    
   };
   const deleteProduct = async (pProductId) => { // CRUD operasyonlarından Delete yani 'DELETE' HTTP Methots. 

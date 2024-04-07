@@ -1,6 +1,22 @@
 import React from 'react'
+import { useContext, useState } from 'react'
+import { ProductContext } from "../../contexts/ProductContex";
+import { CategoryContext } from '../../contexts/CategoryContext';
 
 const AddProductModal = () => {
+  const {addProduct} = useContext(ProductContext);
+  const {categoryList} = useContext(CategoryContext);
+    
+  const [name, setName] = useState('');
+  const [price, setPrice] = useState('');
+  const [description, setDescription] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
+  const [categoryId, setCategoryId] = useState('');
+
+  const categorySelectOptions = categoryList.map((category) => {
+    return <option key={category.id} value={category.id}> {category.name} </option>
+  });
+
   return (
     <div
     className='modal fade'
@@ -19,38 +35,49 @@ const AddProductModal = () => {
         </div>
         <div className='modal-body'>
         <div className='mb-3'>
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Select Category</option>
-            <option value="1">Electronic</option>
-            <option value="2">home</option>
+          <select class="form-select" 
+          value={categoryId}
+          onChange={(e)=>setCategoryId(e.target.value)}aria-label="Default select example">
+          
+            <option value="" selected>Select Category</option>
+            {categorySelectOptions}
+            
           </select>
           </div>
           <div className='mb-3'>
             <input
               type='text'
               className='form-control'
-              placeholder='Name'              
+              placeholder='Name' 
+              value={name}
+              onChange={(e)=>setName(e.target.value)}             
             />
           </div>
           <div className='mb-3'>
             <input
               type='number'
               className='form-control'
-              placeholder='Price'              
+              placeholder='Price'
+              value={price}
+              onChange={(e)=>setPrice(e.target.value)}              
             />
           </div>
           <div className='mb-3'>
             <input
               type='text'
               className='form-control'
-              placeholder='Description'              
+              placeholder='Description'
+              value={description}
+              onChange={(e)=>setDescription(e.target.value)}              
             />
           </div>
           <div className='mb-3'>
             <input
               type='file'
               className='form-control'
-              placeholder='Image'              
+              placeholder='Image'
+              value={imageUrl}
+              onChange={(e)=>setImageUrl(e.target.value)}              
             />
           </div>         
         </div>
@@ -66,6 +93,7 @@ const AddProductModal = () => {
             type='button'
             className='btn btn-primary'          
             data-bs-dismiss='modal'
+            onClick={() => addProduct({name, price, description, imageUrl, categoryId})}
           >
             Save
           </button >

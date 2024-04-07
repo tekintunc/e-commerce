@@ -75,8 +75,13 @@ const CategoryContextProvider = ({ children }) => { // Contex yapısı oluşturu
       showToast('Error! data can not updated.', 'error');          
     }
   };
+
+  const getCategoryNameById = (pCategoryId) => {
+    const category = categoryList.find(category => category.id === pCategoryId)
+    return category.name
+  };
 // Bu Contex te oluşturulan ve diger componentlerde kullanılmak istenen her element aşağıda export edilir.
-  return <CategoryContext.Provider value={{ categoryList, addCategory, deleteCategory, updateCategory, loading, error}}>{children}</CategoryContext.Provider>;
+  return <CategoryContext.Provider value={{ categoryList, addCategory, deleteCategory, updateCategory, loading, error,getCategoryNameById }}>{children}</CategoryContext.Provider>;
 };
 
 export default CategoryContextProvider;

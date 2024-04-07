@@ -1,17 +1,16 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import TableProductRow from './TableProductRow';
 import  Alert from "../../components/Alert";
 import AddProductModal from "./AddProductModal";
 import UpdateProductModal from './UpdateProductModal';
+import { ProductContext } from '../../contexts/ProductContex';
 
 const Products = () => {
 
-  const [productList,setProductList] = useState([
-    {id:1,name: "xxx", price:25,description:"XXX",imageUrl:"xxx.jpg",categoryId:"1"},
-   
-  ])
+  const {productList} = useContext(ProductContext);
+  
   const productListTemplate = productList.map((product) => { // ProductList i render edecek template. 
-    return <TableProductRow  />;
+    return <TableProductRow product={product} />;
     
   });
   return (
