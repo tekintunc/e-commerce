@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { CategoryContext } from '../../contexts/CategoryContext'
 import { ProductContext } from '../../contexts/ProductContex'
 
-const TableProductRow = ({product}) => {
+const TableProductRow = ({product, openUpdateModal}) => {
 
  const { getCategoryNameById } = useContext(CategoryContext)
  const { deleteProduct } = useContext(ProductContext)
