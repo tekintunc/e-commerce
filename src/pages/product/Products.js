@@ -10,9 +10,12 @@ const Products = () => {
   const {productList} = useContext(ProductContext);
   
   const productListTemplate = productList.map((product) => { // ProductList i render edecek template. 
-    return <TableProductRow product={product} />;
-    
+    return <TableProductRow product={product} />;    
   });
+
+  const openUpdateModal = (pId, pName, pPrice, pDescription,pImageUrl, pCategoryId) => {
+
+  }
   return (
     <>
     <div className='container'>
