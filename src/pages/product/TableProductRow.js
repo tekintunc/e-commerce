@@ -18,7 +18,8 @@ const TableProductRow = ({product}) => {
           <i
             className='bi bi-pencil-square text-success fs-4 me-3'
             data-bs-toggle='modal'
-            data-bs-target='#updateProduct'          
+            data-bs-target='#updateProduct'
+            onClick={() => openUpdateModal(product.id,product.name, product.description,product.imageUrl,product.categoryId)}          
           ></i>
           <i className='bi bi-trash text-danger fs-4'
           onClick={() => deleteProduct(product.id)}         

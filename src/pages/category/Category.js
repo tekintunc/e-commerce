@@ -18,7 +18,7 @@ const Category = () => { //Category adında bir RAFCE oluşturduk. Category sayf
    setDescription(pDescription);
 
   };
-// hallo
+
   const categoryListTemplate = categoryList.map((category) => { // CategoryList i render edecek template. 
     return (
       <TableCategoryRow
