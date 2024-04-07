@@ -8,6 +8,10 @@ import { ProductContext } from '../../contexts/ProductContex';
 const Products = () => {
 
   const {productList} = useContext(ProductContext);
+
+  const [id,setId] = useState('') // id yi manipüle edebileceğimiz id state.
+  const [name,setName] = useState('') // name yi manipüle edebileceğimiz name state.
+  const [description,setDescription] = useState('') // description u manipüle ettiğimiz state
   
   const productListTemplate = productList.map((product) => { // ProductList i render edecek template. 
     return <TableProductRow product={product} />;    
