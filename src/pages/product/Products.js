@@ -11,15 +11,25 @@ const Products = () => {
 
   const [id,setId] = useState('') // id yi manipüle edebileceğimiz id state.
   const [name,setName] = useState('') // name yi manipüle edebileceğimiz name state.
+  const [price,setPrice] = useState('')  
   const [description,setDescription] = useState('') // description u manipüle ettiğimiz state
-  
-  const productListTemplate = productList.map((product) => { // ProductList i render edecek template. 
-    return <TableProductRow product={product} />;    
-  });
+  const [pImageUrl,setImageUrl] = useState('')
+  const [pCategoryId,setCategoryId] = useState('')
 
   const openUpdateModal = (pId, pName, pPrice, pDescription,pImageUrl, pCategoryId) => {
+    setId(pId)
+    setName(pName)
+    setPrice(pPrice)
+    setDescription(pDescription)
+    setImageUrl(pImageUrl)
+    setCategoryId(pCategoryId)
 
   }
+
+  const productListTemplate = productList.map((product) => { // ProductList i render edecek template. 
+    return <TableProductRow product={product} openUpdateModal={openUpdateModal} />;    
+  });
+
   return (
     <>
     <div className='container'>
