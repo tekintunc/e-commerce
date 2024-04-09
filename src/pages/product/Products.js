@@ -13,8 +13,8 @@ const Products = () => {
   const [name,setName] = useState('') // name yi manipüle edebileceğimiz name state.
   const [price,setPrice] = useState('')  
   const [description,setDescription] = useState('') // description u manipüle ettiğimiz state
-  const [pImageUrl,setImageUrl] = useState('')
-  const [pCategoryId,setCategoryId] = useState('')
+  const [imageUrl,setImageUrl] = useState('')
+  const [categoryId,setCategoryId] = useState('')
 
   const openUpdateModal = (pId, pName, pPrice, pDescription,pImageUrl, pCategoryId) => {
     setId(pId)
@@ -68,7 +68,19 @@ const Products = () => {
     <AddProductModal />
 
     {/* Update Modal */}
-   <UpdateProductModal />
+   <UpdateProductModal 
+    id={id}      
+    name={name}
+    price={price}
+    description={description}
+    imageUrl={imageUrl}
+    categoryId={categoryId}
+    setName={setName}
+    setPrice={setPrice}
+    setDescription={setDescription}
+    setImageUrl={setImageUrl}
+    setCategoryId={setCategoryId}
+    />
   </>
   )
 }

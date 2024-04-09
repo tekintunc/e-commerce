@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ProductContext } from '../../contexts/ProductContex';
 
-const UpdateProductModal = () => {
+const UpdateProductModal = ({
+  id,name, price,description,imageUrl,categoryId,
+  setName,setPrice,setDescription,setImageUrl,setCategoryId}) => {
+    const {UpdateProduct} = useContext(ProductContext);
   return (
     <div
     className='modal fade'
@@ -29,28 +33,36 @@ const UpdateProductModal = () => {
             <input
               type='text'
               className='form-control'
-              placeholder='Name'              
+              placeholder='Name'
+              value={name}
+              onChange={(e)=> setName(e.target.value)}              
             />
           </div>
           <div className='mb-3'>
             <input
               type='number'
               className='form-control'
-              placeholder='Price'              
+              placeholder='Price'
+              value={price}
+              onChange={(e)=> setPrice(e.target.value)}              
             />
           </div>
           <div className='mb-3'>
             <input
               type='text'
               className='form-control'
-              placeholder='Description'              
+              placeholder='Description'
+              value={description}
+              onChange={(e)=> setDescription(e.target.value)}              
             />
           </div>
           <div className='mb-3'>
             <input
               type='file'
               className='form-control'
-              placeholder='Image'              
+              placeholder='Image'
+              value={imageUrl}
+              onChange={(e)=> setImageUrl(e.target.value)}   
             />
           </div>        
         </div>
@@ -66,6 +78,9 @@ const UpdateProductModal = () => {
             type='button'
             className='btn btn-primary'          
             data-bs-dismiss='modal'
+            onClick={() => UpdateProduct({
+              id, name, price,description,imageUrl,categoryId
+            })}
           >
             Save
           </button >
